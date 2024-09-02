@@ -1,0 +1,35 @@
+.hero {
+  height: 650px;
+  display: block;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../../images/HeroSection.jpg);
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+  object-fit: cover;
+  /* vertical-align: middle; */
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.hero__container {
+  width: 1140px;
+  margin: auto;
+}
+
+.hero__title {
+  margin: 0;
+  bottom: 165px;
+  position: absolute;
+  font-size: 75px;
+  color: white;
+}
+
+.hero__subtitle {
+  margin: 0;
+  bottom: 100px;
+  position: absolute;
+  font-size: 26px;
+  line-height: 32px;
+  color: white;
+  width: 600px;
+}

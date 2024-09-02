@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  width: 100%;
+}
+
+.header__container {
+  width: 1140px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 70px;
+  align-items: center;
+}
+
+.header__logo {
+  height: 40px;
+  width: 109px;
+  background-image: url('../../images/logo_with_text.png');
+  background-size: cover;
+}
+
+.header__login-button {
+  color: #fff;
+  background-color: #478ac9;
+  height: 40px;
+  width: 95px;
+  border: none;
+  border-radius: 50px;
+}

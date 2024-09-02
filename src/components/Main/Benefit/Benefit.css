@@ -1,0 +1,42 @@
+.benefit {
+  height: 580px;
+  display: flex;
+  justify-content: center;
+}
+
+.benefit__container {
+  width: 1140px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 90px 0 60px;
+}
+
+.benefit__title {
+  font-size: 48px;
+  margin-bottom: 25px;
+}
+
+.benefit__columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 350px;
+}
+
+.benefit__item {
+  
+}
+
+.benefit__icon {
+
+}
+
+.benefit__subtitle {
+
+}
+
+.benefit__description {
+
+}

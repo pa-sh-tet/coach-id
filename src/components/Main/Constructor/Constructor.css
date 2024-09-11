@@ -1,0 +1,53 @@
+.constructor {
+  object-fit: cover;
+  display: block;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../../images/constructor_img.jpg);
+  background-position: 50% 50%;
+  height: 850px;
+}
+
+.constructor__container {
+  width: 1140px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: left;
+}
+
+.constructor__box {
+  height: 450px;
+  width: 470px;
+  box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.4);
+  margin: auto 0;
+  color: #111111;
+  background-color: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.constructor__title {
+  font-weight: 400;
+  font-size: 4.5rem;
+  line-height: 1.1;
+}
+
+.constructor__description {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+
+}
+
+.constructor__link {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 30px auto 0 0;
+  padding: 18px 52px;
+  color: #ffffff;
+  background-color: #db545a;
+  text-decoration: none;
+}

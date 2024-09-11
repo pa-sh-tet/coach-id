@@ -10,8 +10,10 @@
 @import url('./components/Main/Main.css');
 @import url('./components/Main/Hero/Hero.css');
 @import url('./components/Main/Benefit/Benefit.css');
-/* @import url('./components/Main/Main.css'); */
-/* @import url('./components/Main/Main.css'); */
+@import url('./components/Main/AboutUs/AboutUs.css');
+@import url('./components/Main/Portfolio/Portfolio.css');
+@import url('./components/Main/Constructor/Constructor.css');
+@import url('./components/Main/Contacts/Contacts.css');
 /* @import url('./components/Main/Main.css'); */
 
 /* @import url('./components/Main/AboutMe/AboutMe.css');

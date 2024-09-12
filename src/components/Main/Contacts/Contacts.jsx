@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import grid1 from '../../../images/';
+import vk_icon from '../../../images/vk.png';
 
 export default function Contacts () {
   return (
@@ -10,7 +10,7 @@ export default function Contacts () {
         <div className="contacts__items">
           <div className="contacts__item">
             <span className='contacts__icon'>
-              <img src="" alt="" className='contacts__img' />
+              <img src={vk_icon} alt="" className='contacts__img' />
             </span>
             <h4 className='contacts__subtitle'>
               Группа Вконтакте

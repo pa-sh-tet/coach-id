@@ -13,11 +13,11 @@
 }
 
 .register__logo {
-  background-image: url('../../images/header__logo.svg');
+  /* background-image: url('../../images/header__logo.svg'); */
   display: block;
   height: 38px;
   width: 38px;
-  background-image: url(../../images/header__logo.svg);
+  /* background-image: url(../../images/header__logo.svg); */
   background-size: cover;
   margin: 0 auto 40px 0;
   transition: .3s ease-in-out;

@@ -6,11 +6,18 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import Constructor from '../Constructor/Constructor';
 import Profile from '../Profile/Profile';
-// import Register from '../Register/Register';
-// import Login from '../Login/Login';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App () {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/signup", {replace: true});
+    }
+  }, []);
 
   // const handleRegister = () => {
 
@@ -23,18 +30,24 @@ function App () {
   return (
     <div className='app'>
       <Routes>
+        <Route path="/signup"
+          element={<Register
+            // onRegister={handleRegister}
+          />}>
+        </Route>
         {/* <Route path="/signup"
           element={isLoggedIn
           ? <Navigate to="/" replace />
-          : <Register
-            onRegister={handleRegister}
+          : 
+          <Register
+            // onRegister={handleRegister}
           />}>
-        </Route>
-        <Route path="/signin"
+        </Route> */}
+        {/* <Route path="/signin"
           element={isLoggedIn
           ? <Navigate to="/" replace />
           : <Login
-            onLogin={handleLogin}
+            // onLogin={handleLogin}
           />}>
         </Route> */}
         <Route path="/"
@@ -46,7 +59,7 @@ function App () {
             </>
           }>
         </Route>
-        {/* <Route path="/profile"
+        <Route path="/profile"
           element={
             <>
               <Header isLoggedIn={isLoggedIn}/>
@@ -54,7 +67,7 @@ function App () {
               <Footer />
             </> 
           }>
-        </Route> */}
+        </Route>
         {/* <Route path="/constructor"
           element={
             <>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import vk_icon from '../../../images/vk.png';
+import vk_icon from '../../../images/icon_vk.png';
+import whatsapp_icon from '../../../images/icon_whatsapp.png';
+import inst_icon from '../../../images/icon_inst.jpg';
 
 export default function Contacts () {
   return (
@@ -23,7 +25,7 @@ export default function Contacts () {
           </div>
           <div className="contacts__item">
             <span className='contacts__icon'>
-              <img src="" alt="" className='contacts__img' />
+              <img src={whatsapp_icon} alt="" className='contacts__img' />
             </span>
             <h4 className='contacts__subtitle'>
               WhatsApp
@@ -38,7 +40,7 @@ export default function Contacts () {
           </div>
           <div className="contacts__item">
             <span className='contacts__icon'>
-              <img src="" alt="" className='contacts__img' />
+              <img src={inst_icon} alt="" className='contacts__img' />
             </span>
             <h4 className='contacts__subtitle'>
               Instagram

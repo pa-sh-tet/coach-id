@@ -42,7 +42,7 @@ function App () {
             <>
               <Header isLoggedIn={isLoggedIn}/>
               <Main />
-              {/* <Footer /> */}
+              <Footer />
             </>
           }>
         </Route>

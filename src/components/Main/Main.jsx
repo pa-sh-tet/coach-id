@@ -4,6 +4,7 @@ import Hero from './Hero/Hero';
 import Benefit from './Benefit/Benefit';
 import AboutUs from './AboutUs/AboutUs';
 import Portfolio from './Portfolio/Portfolio';
+import Promo from './Promo/Promo';
 import Constructor from './Constructor/Constructor';
 import Contacts from './Contacts/Contacts';
 
@@ -15,6 +16,7 @@ export default function Main () {
       <Benefit />
       <AboutUs />
       <Portfolio />
+      <Promo />
       <Constructor />
       <Contacts />
     </main>

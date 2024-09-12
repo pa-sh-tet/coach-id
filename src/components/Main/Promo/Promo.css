@@ -1,0 +1,57 @@
+.promo {
+  height: 660px;
+  display: flex;
+  justify-content: center;
+}
+
+.promo__container {
+  width: 1140px;
+  padding: 60px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: row;
+  gap: 10px;
+}
+
+.promo__img {
+  object-fit: cover;
+  display: block;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.promo__img-1 {
+  grid-row: span 2;
+  grid-column: span 2;
+  background-image: url(../../../images/promo_grid_1.jpg);
+}
+
+.promo__text {
+  padding: 30px;
+  width: 220px;
+  height: 220px;
+}
+
+.promo__title {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 16px 0 0;
+}
+
+.promo__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 21px 0 0;
+}
+
+.promo__img-2 {
+  background-image: url(../../../images/promo_grid_2.jpg);
+}
+
+.promo__img-3 {
+  grid-column: span 2;
+  background-image: url(../../../images/promo_grid_3.jpg);
+}

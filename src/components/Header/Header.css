@@ -22,6 +22,9 @@
 }
 
 .header__login-button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 39px;
   color: #fff;
   background-color: #478ac9;
   height: 40px;

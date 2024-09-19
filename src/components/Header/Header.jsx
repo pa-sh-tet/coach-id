@@ -11,7 +11,7 @@ export default function Header ({ isLoggedIn }) {
       <div className='header__container'>
         <Link to="/" className="header__logo link" />
         <NavTab />
-        <button className="header__login-button">Войти</button>
+        <Link to='/signin' className="header__login-button link">Войти</Link>
         {/* <Link to="/" className="header__logo link" />
         {isLoggedIn ? (
           <Navigation openMenu={openMenu} />

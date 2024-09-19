@@ -15,7 +15,7 @@ function App () {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/signup", {replace: true});
+      navigate("/profile", {replace: true});
     }
   }, []);
 
@@ -35,6 +35,11 @@ function App () {
             // onRegister={handleRegister}
           />}>
         </Route>
+        <Route path="/signin"
+          element={<Login
+            // onRegister={handleRegister}
+          />}>
+        </Route>
         {/* <Route path="/signup"
           element={isLoggedIn
           ? <Navigate to="/" replace />
@@ -50,7 +55,7 @@ function App () {
             // onLogin={handleLogin}
           />}>
         </Route> */}
-        <Route path="/"
+        <Route path="/main"
           element={
             <>
               <Header isLoggedIn={isLoggedIn}/>

@@ -14,17 +14,37 @@
 }
 
 .register__box {
-  height: 600px;
+  height: auto;
   width: 500px;
   border-radius: 50px;
   background-color: #F2F2F2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.register__button-back {
+  position: absolute;
+  left: -50px;
+  /* top: -40px; */
+  height: 35px;
+  width: 35px;
+  background-image: url(../../images/button-back.png);
+  background-size: cover;
+  color: #00f635;
+}
+
+.register__img {
+  background-image: url(../../images/logo.png);
+  background-size: cover;
+  height: 45px;
+  width: 135px;
+  margin: 20px 0 0;
 }
 
 .register__title {
-  margin: 40px 0;
+  margin: 10px 0 20px;
 }
 
 .register__form {
@@ -33,43 +53,33 @@
   width: 400px;
 }
 
-.register__versus {
-  text-align: center;
-  margin: 15px 0;
-  font-weight: 600;
-  color: #212529;
-}
-
-.register__link {
-  width: calc(100%);
-  height: 25px;
-  border-radius: 45px;
-  margin: 10px 0;
-  padding: 10px 0;
-  text-align: center;
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #0074e8;
-  font-size: 17px;
-  line-height: 25px;
+.register__label {
+  margin-bottom: 4px;
+  font-size: 14px;
+  padding-left: 10px;
 }
 
 .register__input {
-  width: calc(100% - 30px);
-  padding: 10px 15px;
-  border-radius: 45px;
-  border-color: #b3b3b3;
-  border: none;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-radius: 15px;
+  border-color: #cdcdcd;
+  border-style: solid;
+  border-width: 2px;
   height: 25px;
   font-size: 16px;
   background-color: #ffffff;
   color: #000000;
+  margin-bottom: 8px;
+}
+
+.register__input:nth-child(8) {
   margin-bottom: 20px;
 }
 
 .register__input:focus {
   transition: .3s ease-in-out;
-  font-size: 17px;  
+  /* font-size: 17px; */
   color: #212529;
   background-color: #fff;
   border-color: #bdbdbd;
@@ -78,7 +88,7 @@
 }
 
 .register__submit-button {
-  background-color: rgba(68, 135, 204, 0.611764705882353);
+  background-color: #21479acf;
   color: #ffffff;
   width: 100%;
   border-style: none;
@@ -89,8 +99,29 @@
   font-size: 17px;
 }
 
+.register__versus {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 600;
+  color: #212529;
+}
+
+.register__link {
+  width: calc(100%);
+  height: 25px;
+  border-radius: 45px;
+  margin: 0 0 15px;
+  padding: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #0074e8;
+  font-size: 17px;
+  line-height: 25px;
+}
+
 .register__login-text {
-  margin: 10px 0 0;
+  margin: 5px 0 25px;
   font-size: 16px;
   font-weight: 400;
   line-height: 17px;  

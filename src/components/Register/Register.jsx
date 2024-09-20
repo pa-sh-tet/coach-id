@@ -27,7 +27,7 @@ export default function Register({ onRegister }) {
     <div className='register'>
       <div className="register__container">
         <div className='register__box'>
-          <Link className='register__button-back link' to='/main'></Link>
+          <Link className='register__button-back link' to='/'></Link>
           <div className='register__img'></div>
           <h2 className='register__title'>Регистрация</h2>
           <form className='register__form'>

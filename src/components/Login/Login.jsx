@@ -22,7 +22,7 @@ export default function Login({ onLogin }) {
     <div className='login'>
       <div className="login__container">
         <div className='login__box'>
-          <Link className='login__button-back link' to='/main'></Link>
+          <Link className='login__button-back link' to='/'></Link>
           <div className='login__img'></div>
           <h2 className='login__title'>Рады видеть!</h2>
           <form className='login__form'>

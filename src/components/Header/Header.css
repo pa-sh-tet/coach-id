@@ -1,8 +1,17 @@
 .header {
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 100px;
   width: 100%;
+}
+
+.header__main {
+
+}
+
+.header__profile {
+  background-color: #25314d;
+  color: #fff;
 }
 
 .header__container {

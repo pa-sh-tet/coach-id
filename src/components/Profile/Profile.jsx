@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import avatar from '../../images/promo_grid_1.jpg';
+import avatarImg from '../../images/profile_avatar.png';
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function Profile({ signOut }) {
+export default function Profile({ signOut, onUpdateUser }) {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const [isEditing, setIsEditing] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const currentUser = useContext(CurrentUserContext);
 
@@ -33,17 +41,53 @@ export default function Profile({ signOut }) {
   
   useEffect(() => {
     setName(currentUser.name);
+    setEmail(currentUser.email);
+    setAvatar(currentUser.avatar);
+    setPhoneNumber(currentUser.phoneNumber);
   }, [currentUser]);
+
+  function handleNameChange(e) {
+    const value = e.target.value;
+    setIsEditing(true);
+    setName(value);
+    setIsNameValid(value.length >= 2 && value.length <= 40);
+  }
+
+  function handleEmailChange(e) {
+    const value = e.target.value;
+    setEmail(value);
+    setIsEditing(true);
+    setIsEmailValid(value.includes('@') && value.includes('.'));
+  }
+
+  function handlePhoneNumberChange(e) {
+    const value = e.target.value;
+    setPhoneNumber(value);
+    setIsEditing(true);
+    // setIsEmailValid(value.includes('@') && value.includes('.'));
+  }
 
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (isNameValid && isEmailValid) {
+      onUpdateUser({
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+      });
+      setIsEditing(false);
+    }
+  }
+
   return (
     <div className='profile'>
       <div className='profile__container'>
         <div className='profile__info'>
-          <img className='profile__avatar' src={avatar} alt="Profile avatar" />
+          <img className='profile__avatar' src={avatar || avatarImg} alt="Profile avatar" />
           <p className='profile__name'>{name}</p>
           <button className='profile__signout-button link' onClick={signOut}>Выйти из аккаунта</button>
         </div>
@@ -64,8 +108,8 @@ export default function Profile({ signOut }) {
           </div>
           <div className="profile__content-box">
             {activeTab === 0 && (
-              <div className="profile__content_personal">
-                <h2 className='profile__title'>Личные данные</h2>
+              <form className="profile__content_personal">
+                {/* <h2 className='profile__title'>Личные данные</h2> */}
                 <div className="profile__content-item">
                   <label htmlFor="name" className='profile__label'>Имя</label>
                   <input
@@ -76,6 +120,7 @@ export default function Profile({ signOut }) {
                     maxLength="40"
                     className='profile__input'
                     value={name}
+                    onChange={handleNameChange}
                   />
                 </div>
                 <div className="profile__content-item">
@@ -87,21 +132,26 @@ export default function Profile({ signOut }) {
                     minLength="2"
                     maxLength="40"
                     className='profile__input'
+                    value={email}
+                    onChange={handleEmailChange}
                   />
                 </div>
                 <div className="profile__content-item">
                   <label htmlFor="number" className='profile__label'>Телефон</label>
                   <input
-                    type="number"
-                    id="number"
+                    type="tel"
+                    id="phoneNumber"
                     placeholder='Введите Ваш номер телефона'
                     minLength="2"
                     maxLength="40"
                     className='profile__input'
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
                   />
                 </div>
-                <h2 className='profile__title'>Адрес доставки</h2>
-              </div>
+                {/* <h2 className='profile__title'>Адрес доставки</h2> */}
+                <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+              </form>
             )}
             {activeTab === 1 && (
               <div className="profile__content_orders">

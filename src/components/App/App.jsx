@@ -10,15 +10,18 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 // import { auth } from '../../utils/Auth.js';
+import avatarImage from '../../images/promo_grid_1.jpg';
 
 function App () {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [users, setUsers] = useState([
     {
-      name: 'ва',
-      email: 'ва',
-      password: 'ва',
+      name: 'sd',
+      email: 'sd',
+      password: 'sd',
+      avatar: avatarImage,
+      phoneNumber: '+79541231489',
     },
   ]);
 
@@ -88,6 +91,16 @@ function App () {
       alert("Invalid email or password");
     }
   }
+
+  const handleUpdateUser = (newUserInfo) => {
+    // mainApi.patchUserInfo(newUserInfo)
+      // .then((newData) => {
+        setCurrentUser(newUserInfo);
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
+  }
   
 
   return (
@@ -121,6 +134,7 @@ function App () {
                 />
                 <Profile 
                   signOut={signOut}
+                  onUpdateUser={handleUpdateUser}
                 />
                 <Footer />
               </> 

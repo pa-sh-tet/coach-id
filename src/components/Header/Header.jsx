@@ -9,11 +9,10 @@ export default function Header ({ isLoggedIn }) {
   return (
     <header id='header' className={`header ${location.pathname === '/' ? 'header__main' : 'header__profile'}`}>
       <div className='header__container'>
-        <Link to="/" className="header__logo link" />
+        <Link to="https://vk.com/coachid_boards" target='_blank' className="header__logo link" />
         {isLoggedIn ? (
           <>
             <Navigation />
-            {/* <button className="header__login-button link" onClick={signOut}>Выйти</button> */}
           </>
         ) : (
           <>

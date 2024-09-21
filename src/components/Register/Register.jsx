@@ -2,26 +2,34 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
 export default function Register({ onRegister }) {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
 
-  // function handleNameChange(evt) {
-  //   setName(evt.target.value);
-  // }
+  function handleNameChange(evt) {
+    setName(evt.target.value);
+  }
 
-  // function handleEmailChange(evt) {
-  //   setEmail(evt.target.value);
-  // }
+  function handleEmailChange(evt) {
+    setEmail(evt.target.value);
+  }
   
-  // function handlePasswordChange(evt) {
-  //   setPassword(evt.target.value);
-  // }
+  function handlePasswordChange(evt) {
+    setPassword(evt.target.value);
+  }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   onRegister(name, email, password);
-  // }
+  function handlePasswordRepeatChange(evt) {
+    setPasswordRepeat(evt.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onRegister(name, email, password);
+    setName('');
+    setEmail('');
+    setPassword('');
+  }
 
   return (
     <div className='register'>
@@ -30,7 +38,7 @@ export default function Register({ onRegister }) {
           <Link className='register__button-back link' to='/'></Link>
           <div className='register__img'></div>
           <h2 className='register__title'>Регистрация</h2>
-          <form className='register__form'>
+          <form className='register__form' onSubmit={handleSubmit}>
             <label htmlFor="name" className='register__label'>Имя</label>
             <input 
               type="text"
@@ -38,8 +46,8 @@ export default function Register({ onRegister }) {
               placeholder='Введите имя'
               minLength="2"
               maxLength="40"
-              // value={name}
-              // onChange={handleNameChange}
+              value={name}
+              onChange={handleNameChange}
               required
             />
             <label htmlFor="password" className='register__label'>Пароль</label>
@@ -49,8 +57,8 @@ export default function Register({ onRegister }) {
               placeholder='Введите пароль'
               minLength="2"
               maxLength="40"
-              // value={name}
-              // onChange={handleNameChange}
+              value={password}
+              onChange={handlePasswordChange}
               required
             />
             <label htmlFor="password" className='register__label'>Повторите пароль</label>
@@ -60,8 +68,8 @@ export default function Register({ onRegister }) {
               placeholder='Введите пароль повторно'
               minLength="2"
               maxLength="40"
-              // value={name}
-              // onChange={handleNameChange}
+              value={passwordRepeat}
+              onChange={handlePasswordRepeatChange}
               required
             />
             <label htmlFor="email" className='register__label'>Почта</label>
@@ -71,11 +79,11 @@ export default function Register({ onRegister }) {
               placeholder='Введите почту'
               minLength="2"
               maxLength="40"
-              // value={name}
-              // onChange={handleNameChange}
+              value={email}
+              onChange={handleEmailChange}
               required
             />
-            <button className='register__submit-button link'>Зарегистрироваться</button>
+            <button type='submit' className='register__submit-button link'>Зарегистрироваться</button>
             <p className='register__versus'>ИЛИ</p>
             <Link className='register__link link'>Войти через Вконтакте</Link>
             <Link className='register__link link'>Войти по номеру телефона</Link>

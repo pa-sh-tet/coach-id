@@ -7,23 +7,16 @@ export default function Navigation({ openMenu }) {
   return (
     <nav className="header__navigation">
       <div className="header__links">
-        <Link to="/" className={`header__link header__main link ${location.pathname === "/" && 'header__main_active'}`}>
+        <Link to="/" className={`header__link header__main link ${location.pathname === "/" && 'header__link_active'}`}>
           Главная
         </Link>
-        <Link to="/profile" className={`header__link header__profile link ${location.pathname === "/" && 'header__link_black'} ${location.pathname === "/profile" && 'header__link_active'}`}>
+        <Link to="/profile" className={`header__link header__profile link ${location.pathname === "/profile" && 'header__link_active'}`}>
           Профиль
         </Link>
-        <Link to="/constructor" className={`header__link header__constructor link ${location.pathname === "/" && 'header__link_black'} ${location.pathname === "/constructor" && 'header__link_active'}`}>
+        <Link to="/constructor" className={`header__link header__constructor link ${location.pathname === "/constructor" && 'header__link_active'}`}>
           Конструктор
         </Link>
       </div>
-      {/* <Link to="/profile" className="header__profile link">
-        <div className="header__profile-logo"></div>
-        <div className="header__profile-text">
-          Аккаунт
-        </div>
-      </Link> */}
-      {/* <button className='header__menu' onClick={openMenu}></button> */}
     </nav>
   )
 }

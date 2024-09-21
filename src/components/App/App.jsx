@@ -9,13 +9,18 @@ import Constructor from '../Constructor/Constructor';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+// import { auth } from '../../utils/Auth.js';
 
 function App () {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
-  const user = {
-    name: 'Pavel',
-  }
+  const [users, setUsers] = useState([
+    {
+      name: 'ва',
+      email: 'ва',
+      password: 'ва',
+    },
+  ]);
 
   const navigate = useNavigate();
 
@@ -25,27 +30,65 @@ function App () {
     }
   }, []);
 
-  useEffect(() => {
-    setCurrentUser(user);
-    // if (isLoggedIn) {
-    //   Promise.all([ mainApi.getUserInfo(), mainApi.getSaveMovies() ])
-    //     .then(([user, movies]) => {
-    //       setCurrentUser(user);
-    //       setSaveMovies(movies);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     })
-    //   }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   setCurrentUser(user);
+  //   // if (isLoggedIn) {
+  //   //   Promise.all([ mainApi.getUserInfo(), mainApi.getSaveMovies() ])
+  //   //     .then(([user, movies]) => {
+  //   //       setCurrentUser(user);
+  //   //       setSaveMovies(movies);
+  //   //     })
+  //   //     .catch((error) => {
+  //   //       console.log(error);
+  //   //     })
+  //   //   }
+  // }, [isLoggedIn]);
 
-  // const handleRegister = () => {
+  function signOut () {
+    setIsLoggedIn(false);
+    navigate("/", {replace: true});
+  }
 
-  // }
+  function handleRegister(name, email, password) {
+    const newUser = { name, email, password };
+    setCurrentUser(newUser);
+    setUsers([...users, newUser]);
+    setIsLoggedIn(true);
+    navigate("/profile", {replace: true});
+    // auth.register(name, email, password)
+    //   .then((res) => {
+    //     if (res) {
+    //       setIsSuccess(true);
+    //       setIsInfoPopupOpen(true);
+    //       navigate("/signin", {replace: true});   
+    //     } else {
+    //       setIsSuccess(false);
+    //       setIsInfoPopupOpen(true);    
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setIsSuccess(false);
+    //     setIsInfoPopupOpen(true);
+    //   })
+  }
+  
 
-  // const handleLogin = () => {
-
-  // }
+  function handleLogin(email, password) {
+    // Find the user in the users array
+    const user = users.find((u) => u.email === email && u.password === password);
+  
+    if (user) {
+      // Set the current user and login status
+      setCurrentUser(user);
+      setIsLoggedIn(true);
+      navigate("/profile", { replace: true });
+    } else {
+      // Display an error message or handle the case where the user is not found
+      alert("Invalid email or password");
+    }
+  }
+  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -53,29 +96,14 @@ function App () {
         <Routes>
           <Route path="/signup"
             element={<Register
-              // onRegister={handleRegister}
+              onRegister={handleRegister}
             />}>
           </Route>
           <Route path="/signin"
             element={<Login
-              // onRegister={handleRegister}
+              onLogin={handleLogin}
             />}>
           </Route>
-          {/* <Route path="/signup"
-            element={isLoggedIn
-            ? <Navigate to="/" replace />
-            : 
-            <Register
-              // onRegister={handleRegister}
-            />}>
-          </Route> */}
-          {/* <Route path="/signin"
-            element={isLoggedIn
-            ? <Navigate to="/" replace />
-            : <Login
-              // onLogin={handleLogin}
-            />}>
-          </Route> */}
           <Route path="/"
             element={
               <>
@@ -88,13 +116,17 @@ function App () {
           <Route path="/profile"
             element={
               <>
-                <Header isLoggedIn={isLoggedIn}/>
-                <Profile />
+                <Header
+                  isLoggedIn={isLoggedIn}
+                />
+                <Profile 
+                  signOut={signOut}
+                />
                 <Footer />
               </> 
             }>
           </Route>
-          {/* <Route path="/constructor"
+          <Route path="/constructor"
             element={
               <>
                 <Header isLoggedIn={isLoggedIn}/>
@@ -102,7 +134,7 @@ function App () {
                 <Footer />
               </>
             }>
-          </Route> */}
+          </Route>
         </Routes>
       </div>
     </CurrentUserContext.Provider>

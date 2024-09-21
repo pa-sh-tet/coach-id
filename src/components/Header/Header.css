@@ -3,15 +3,8 @@
   justify-content: center;
   height: 100px;
   width: 100%;
-}
-
-.header__main {
-
-}
-
-.header__profile {
-  background-color: #25314d;
-  color: #fff;
+  color: rgb(0, 0, 0);
+  border-bottom: 1px solid #cdcdcd;
 }
 
 .header__container {

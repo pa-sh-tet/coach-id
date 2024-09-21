@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import avatar from '../../images/promo_grid_1.jpg';
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function Profile() {
+export default function Profile({ signOut }) {
   const [name, setName] = useState('');
   const [activeTab, setActiveTab] = useState(0);
   const currentUser = useContext(CurrentUserContext);
@@ -45,6 +45,7 @@ export default function Profile() {
         <div className='profile__info'>
           <img className='profile__avatar' src={avatar} alt="Profile avatar" />
           <p className='profile__name'>{name}</p>
+          <button className='profile__signout-button link' onClick={signOut}>Выйти из аккаунта</button>
         </div>
         <div className='profile__main'>
           <div className="profile__tab-box">

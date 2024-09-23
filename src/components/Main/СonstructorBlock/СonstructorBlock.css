@@ -1,15 +1,15 @@
-.constructor {
+.constructor-block {
   object-fit: cover;
   display: block;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../../images/constructor_img.jpg);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../../images/constructor-block_img.jpg);
   background-position: 50% 50%;
   height: 850px;
 }
 
-.constructor__container {
+.constructor-block__container {
   width: 1140px;
   height: 100%;
   margin: 0 auto;
@@ -17,7 +17,7 @@
   justify-content: left;
 }
 
-.constructor__box {
+.constructor-block__box {
   height: 450px;
   width: 470px;
   box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.4);
@@ -29,20 +29,20 @@
   flex-direction: column;
 }
 
-.constructor__title {
+.constructor-block__title {
   font-weight: 400;
   font-size: 4.5rem;
   line-height: 1.1;
 }
 
-.constructor__description {
+.constructor-block__description {
   margin-top: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
 
 }
 
-.constructor__link {
+.constructor-block__link {
   text-transform: uppercase;
   font-weight: 700;
   margin: 30px auto 0 0;

@@ -5,10 +5,10 @@ import Benefit from './Benefit/Benefit';
 import AboutUs from './AboutUs/AboutUs';
 import Portfolio from './Portfolio/Portfolio';
 import Promo from './Promo/Promo';
-import Constructor from './Constructor/Constructor';
+import СonstructorBlock from './СonstructorBlock/СonstructorBlock';
 import Contacts from './Contacts/Contacts';
 
-export default function Main () {
+export default function Main ({ isLoggedIn }) {
 
   return (
     <main className="main">
@@ -17,7 +17,9 @@ export default function Main () {
       <AboutUs />
       <Portfolio />
       <Promo />
-      <Constructor />
+      <СonstructorBlock
+       isLoggedIn={isLoggedIn}
+      />
       <Contacts />
     </main>
   )

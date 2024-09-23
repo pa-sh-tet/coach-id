@@ -21,7 +21,7 @@ export default function Contacts () {
               Наша группа Вконтакте, в которой вы можете
               сделать заказ, увидеть новости и новые работы
             </p>
-            <Link className='contacts__link'>Перейти</Link>
+            <Link to='https://vk.com/coachid_boards' target='_blank' className='contacts__link link'>Перейти</Link>
           </div>
           <div className="contacts__item">
             <span className='contacts__icon'>
@@ -34,7 +34,7 @@ export default function Contacts () {
               Свяжитесь с нами в WhatsApp, для
               дальнейшего сотрудничества и заказов
             </p>
-            <Link className='contacts__link'>
+            <Link className='contacts__link link'>
               +7 (***) *** **-**
             </Link>
           </div>
@@ -49,7 +49,7 @@ export default function Contacts () {
               Аккаунт в Instagram, в котором вы можете увидеть
               примеры наших работ и многое другое.
             </p>
-            <Link className='contacts__link'>Перейти</Link>
+            <Link className='contacts__link link'>Перейти</Link>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function Portfolio () {
   return (
     <section className='portfolio' id='portfolio'>
       <div className='portfolio__container'>
-        <h3 className='portfolio__title'>Наши работы</h3>
+        <h3 className='portfolio__title merriweather'>Наши работы</h3>
         <p className='portfolio__description'>Производим планшеты для любых видов спорта</p>
         <div className='portfolio__background'></div>
         <div className='portfolio__grid'>

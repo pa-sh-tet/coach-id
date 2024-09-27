@@ -8,7 +8,7 @@ export default function Contacts () {
   return (
     <section className='contacts' id='contacts'>
       <div className="contacts__container">
-        <h2 className='contacts__title'>Контакты</h2>
+        <h2 className='contacts__title merriweather'>Контакты</h2>
         <div className="contacts__items">
           <div className="contacts__item">
             <span className='contacts__icon'>

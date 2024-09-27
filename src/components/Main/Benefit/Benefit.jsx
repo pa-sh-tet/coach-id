@@ -9,7 +9,7 @@ export default function Benefit () {
   return (
     <section className='benefit' id='benefit'>
       <div className='benefit__container'>
-        <h2 className='benefit__title'>Наши преимущества</h2>
+        <h2 className='benefit__title merriweather'>Наши преимущества</h2>
         <div className='benefit__columns'>
           <div className='benefit__item'>
             <span className='benefit__icon' style={{ width: '50px', height: '50px', padding: '25px'}}>
@@ -17,7 +17,7 @@ export default function Benefit () {
                src={icon1}
                alt="icon1" />
             </span>
-            <h4 className='benefit__subtitle'>Дизайн</h4>
+            <h4 className='benefit__subtitle roboto'>Дизайн</h4>
             <p className='benefit__description'>Индивидуальный дизайн для каждого клиента</p>
           </div>
           <div className='benefit__item'>

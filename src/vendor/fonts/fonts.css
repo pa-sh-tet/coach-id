@@ -3,8 +3,8 @@
   font-size: normal;
   font-weight: 900;
   src:
-    url(./Inter-Black.woff2) format('woff2'),
-    url(./Inter-Black.woff) format('woff');
+    url(./Inter/Inter-Black.woff2) format('woff2'),
+    url(./Inter/Inter-Black.woff) format('woff');
 }
 
 @font-face {
@@ -12,8 +12,8 @@
   font-size: normal;
   font-weight: 500;
   src:
-    url(./Inter-Medium.woff2) format('woff2'),
-    url(./Inter-Medium.woff) format('woff');
+    url(./Inter/Inter-Medium.woff2) format('woff2'),
+    url(./Inter/Inter-Medium.woff) format('woff');
 }
 
 
@@ -22,6 +22,25 @@
   font-size: normal;
   font-weight: 400;
   src:
-    url(./Inter-Regular.woff2) format('woff2'),
-    url(./Inter-Regular.woff) format('woff');
+    url(./Inter/Inter-Regular.woff2) format('woff2'),
+    url(./Inter/Inter-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  /* font-size: normal; */
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(./Merriweather/Merriweather-Regular.woff2) format('woff2'),
+    url(./Merriweather/Merriweather-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-size: normal;
+  font-weight: 400;
+  src:
+    url(./Roboto/Roboto-Regular.woff) format('woff'),
+    url(./Roboto/Roboto-Regular.woff2) format('woff2');
 }

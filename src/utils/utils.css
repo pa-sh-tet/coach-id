@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   transition: .3s ease;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .link {
@@ -34,4 +33,12 @@
 *:disabled {
   opacity: .5;
   cursor: default;
+}
+
+.merriweather {
+  font-family: 'Merriweather', 'Inter', serif;
+}
+
+.roboto {
+  font-family: 'Roboto', 'Inter', serif;
 }

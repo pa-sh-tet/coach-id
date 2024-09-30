@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import avatarImg from '../../images/profile_avatar.png';
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function Profile({ signOut, onUpdateUser }) {
+export default function Profile({ signOut, onUpdateUser, onUpdateDataPost, onUpdateDataSdec }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState('');
@@ -13,6 +13,11 @@ export default function Profile({ signOut, onUpdateUser }) {
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const [isEditing, setIsEditing] = useState(false);
+  
+  const [isDataPostEditing, setIsDataPostEditing] = useState(false);
+
+  const [isDataSdecEditing, setIsDataSdecEditing] = useState(false);
+
   const [activeTab, setActiveTab] = useState(0);
   const currentUser = useContext(CurrentUserContext);
 
@@ -88,6 +93,30 @@ export default function Profile({ signOut, onUpdateUser }) {
       });
       setIsEditing(false);
     }
+  }
+
+  function handleDataPostSubmit(e) {
+    e.preventDefault();
+    // if (isNameValid && isEmailValid) {
+      onUpdateDataPost({
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+      });
+      setIsDataPostEditing(false);
+    // }
+  }
+
+  function handleDataSdecSubmit(e) {
+    e.preventDefault();
+    // if (isNameValid && isEmailValid) {
+      onUpdateDataSdec({
+        // name: name,
+        // email: email,
+        // phoneNumber: phoneNumber,
+      });
+      setIsDataSdecEditing(false);
+    // }
   }
 
   return (
@@ -183,120 +212,120 @@ export default function Profile({ signOut, onUpdateUser }) {
                       <label htmlFor="name" className='profile__label'>Имя</label>
                       <input
                         type="text"
-                        id="name"
+                        id="namePost"
                         placeholder='Введите Имя'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={namePost}
+                        onChange={handleNamePostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="name" className='profile__label'>Фамилия</label>
                       <input
                         type="text"
-                        id="name"
+                        id="surnamePost"
                         placeholder='Введите Фамилию'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={surnamePost}
+                        onChange={handleSurnamePostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="name" className='profile__label'>Отчество</label>
                       <input
                         type="text"
-                        id="name"
+                        id="patronymicPost"
                         placeholder='Введите Отчество'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={patronymicPost}
+                        onChange={handlePatronymicPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Телефон</label>
                       <input
                         type="tel"
-                        id="phoneNumber"
+                        id="phoneNumberPost"
                         placeholder='Введите Номер телефона'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={phoneNumberPost}
+                        onChange={handlePhoneNumberPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Индекс</label>
                       <input
                         type="text"
-                        id="phoneNumber"
+                        id="indexPost"
                         placeholder='Введите Индекс'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={indexPost}
+                        onChange={handleIndexPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Город</label>
                       <input
                         type="text"
-                        id="phoneNumber"
+                        id="cityPost"
                         placeholder='Введите Город'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={cityPost}
+                        onChange={handleCityPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Улица</label>
                       <input
                         type="text"
-                        id="phoneNumber"
+                        id="streetPost"
                         placeholder='Введите Улицу'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={streetPost}
+                        onChange={handleStreetPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Дом</label>
                       <input
                         type="text"
-                        id="phoneNumber"
+                        id="buildingPost"
                         placeholder='Введите Дом'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={buildingPost}
+                        onChange={handleBuildingPostChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Квартира/офис</label>
                       <input
                         type="text"
-                        id="phoneNumber"
+                        id="flatPost"
                         placeholder='Введите Квартиру/офис'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={flatPost}
+                        onChange={handleFlatPostChange}
                       />
                     </div>
-                    <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+                    <button onSubmit={handleDataPostSubmit} className={`profile__save-button ${isDataPostEditing && 'link'}`} disabled={!isDataPostEditing}>Сохранить</button>
                   </div>
                 )}
                 {deliveryTab === 1 && (
@@ -305,55 +334,55 @@ export default function Profile({ signOut, onUpdateUser }) {
                       <label htmlFor="name" className='profile__label'>Имя</label>
                       <input
                         type="text"
-                        id="name"
+                        id="nameSdec"
                         placeholder='Введите Имя'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={nameSdec}
+                        onChange={handleNameSdecChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="name" className='profile__label'>Фамилия</label>
                       <input
                         type="text"
-                        id="name"
+                        id="surnameSdec"
                         placeholder='Введите Фамилию'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={surnameSdec}
+                        onChange={handleSurnameSdecChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="name" className='profile__label'>Отчество</label>
                       <input
                         type="text"
-                        id="name"
+                        id="patronymicSdec"
                         placeholder='Введите Отчество'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={name}
-                        // onChange={handleNameChange}
+                        value={patronymicSdec}
+                        onChange={handlePatronymicSdecChange}
                       />
                     </div>
                     <div className="profile__content-item">
                       <label htmlFor="number" className='profile__label'>Телефон</label>
                       <input
                         type="tel"
-                        id="phoneNumber"
+                        id="phoneNumberSdec"
                         placeholder='Введите Номер телефона'
                         minLength="2"
                         maxLength="40"
                         className='profile__input'
-                        // value={phoneNumber}
-                        // onChange={handlePhoneNumberChange}
+                        value={phoneNumberSdec}
+                        onChange={handlePhoneNumberSdecChange}
                       />
                     </div>
-                    <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+                    <button onSubmit={handleDataSdecSubmit} className={`profile__save-button ${isDataSdecEditing && 'link'}`} disabled={!isDataSdecEditing}>Сохранить</button>
                   </form>
                 )}
               </div>

@@ -39,6 +39,13 @@ export default function Profile({ signOut, onUpdateUser }) {
     }
   ]);
   
+  const [deliveryTab, setDeliveryTab] = useState(0); // Начальное значение: Почта России
+
+  // Обработчик клика по вкладочкам доставки
+  const handleDeliveryTabClick = (tab) => {
+    setDeliveryTab(tab); 
+  }
+
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
@@ -103,57 +110,255 @@ export default function Profile({ signOut, onUpdateUser }) {
               className={`profile__tab ${activeTab === 1 ? 'profile__tab_active' : ''}`}
               onClick={() => handleTabClick(1)}
             >
+              Данные доставки
+            </div>
+            <div
+              className={`profile__tab ${activeTab === 2 ? 'profile__tab_active' : ''}`}
+              onClick={() => handleTabClick(2)}
+            >
               История заказов
             </div>
           </div>
           <div className="profile__content-box">
-            {activeTab === 0 && (
-              <form className="profile__content_personal">
-                {/* <h2 className='profile__title'>Личные данные</h2> */}
-                <div className="profile__content-item">
-                  <label htmlFor="name" className='profile__label'>Имя</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder='Введите Ваше имя'
-                    minLength="2"
-                    maxLength="40"
-                    className='profile__input'
-                    value={name}
-                    onChange={handleNameChange}
-                  />
-                </div>
-                <div className="profile__content-item">
-                  <label htmlFor="email" className='profile__label'>Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder='Введите Вашу почту'
-                    minLength="2"
-                    maxLength="40"
-                    className='profile__input'
-                    value={email}
-                    onChange={handleEmailChange}
-                  />
-                </div>
-                <div className="profile__content-item">
-                  <label htmlFor="number" className='profile__label'>Телефон</label>
-                  <input
-                    type="tel"
-                    id="phoneNumber"
-                    placeholder='Введите Ваш номер телефона'
-                    minLength="2"
-                    maxLength="40"
-                    className='profile__input'
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
-                  />
-                </div>
-                {/* <h2 className='profile__title'>Адрес доставки</h2> */}
-                <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
-              </form>
-            )}
+          {activeTab === 0 && (
+            <form className="profile__content_personal">
+              <div className="profile__content-item">
+                <label htmlFor="name" className='profile__label'>Имя</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder='Введите Ваше имя'
+                  minLength="2"
+                  maxLength="40"
+                  className='profile__input'
+                  value={name}
+                  onChange={handleNameChange}
+                />
+              </div>
+              <div className="profile__content-item">
+                <label htmlFor="email" className='profile__label'>Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder='Введите Вашу почту'
+                  minLength="2"
+                  maxLength="40"
+                  className='profile__input'
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </div>
+              <div className="profile__content-item">
+                <label htmlFor="number" className='profile__label'>Телефон</label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  placeholder='Введите Ваш номер телефона'
+                  minLength="2"
+                  maxLength="40"
+                  className='profile__input'
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                />
+              </div>
+              <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+            </form>
+          )}
             {activeTab === 1 && (
+              <div className="profile__content_personal">
+                <p className='profile__subtitle'>Выберите вид доставки</p>
+                <ul className="profile__delivery-tabs">
+                  <li className={`profile__delivery-tab link ${deliveryTab === 0 ? 'profile__delivery-tab_active' : ''}`}
+                      onClick={() => handleDeliveryTabClick(0)}>
+                      Почта России
+                  </li>
+                  <li className={`profile__delivery-tab link ${deliveryTab === 1 ? 'profile__delivery-tab_active' : ''}`}
+                      onClick={() => handleDeliveryTabClick(1)}>
+                      СДЭК
+                  </li>
+                </ul>
+                {deliveryTab === 0 && (
+                  <div className="profile__delivery-content">
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Имя</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Имя'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Фамилия</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Фамилию'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Отчество</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Отчество'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Телефон</label>
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        placeholder='Введите Номер телефона'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Индекс</label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder='Введите Индекс'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Город</label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder='Введите Город'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Улица</label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder='Введите Улицу'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Дом</label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder='Введите Дом'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Квартира/офис</label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder='Введите Квартиру/офис'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+                  </div>
+                )}
+                {deliveryTab === 1 && (
+                  <form className="profile__delivery-content">
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Имя</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Имя'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Фамилия</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Фамилию'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="name" className='profile__label'>Отчество</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder='Введите Отчество'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={name}
+                        // onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className="profile__content-item">
+                      <label htmlFor="number" className='profile__label'>Телефон</label>
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        placeholder='Введите Номер телефона'
+                        minLength="2"
+                        maxLength="40"
+                        className='profile__input'
+                        // value={phoneNumber}
+                        // onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                    <button onSubmit={handleSubmit} className={`profile__save-button ${isEditing && 'link'}`} disabled={!isEditing}>Сохранить</button>
+                  </form>
+                )}
+              </div>
+            )}
+            {activeTab === 2 && (
               <div className="profile__content_orders">
                 {userOrders.map((order) => (
                   <div key={order.id} className="profile__order">

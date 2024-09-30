@@ -13,7 +13,7 @@ import Login from '../Login/Login';
 import avatarImage from '../../images/promo_grid_1.jpg';
 
 function App () {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [users, setUsers] = useState([
     {

@@ -18,7 +18,8 @@ export default function Profile({
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const [isEditing, setIsEditing] = useState(false);
-
+  
+  // Данные по почте России
   const [isDataPostEditing, setIsDataPostEditing] = useState(false);
   const [namePost, setNamePost] = useState("");
   const [surnamePost, setSurnamePost] = useState("");
@@ -30,6 +31,7 @@ export default function Profile({
   const [buildingPost, setBuildingPost] = useState("");
   const [flatPost, setFlatPost] = useState("");
 
+  // Данные по СДЭК
   const [isDataSdecEditing, setIsDataSdecEditing] = useState(false);
   const [nameSdec, setNameSdec] = useState("");
   const [surnameSdec, setSurnameSdec] = useState("");
@@ -113,29 +115,31 @@ export default function Profile({
     }
   }
 
-  function handleDataPostSubmit(e) {
-    e.preventDefault();
-    // if (isNameValid && isEmailValid) {
+  function handleSubmitDataPost(event) { // TODO: Добавить проверку на валидность
+    event.preventDefault();
     onUpdateDataPost({
-      name: name,
-      email: email,
-      phoneNumber: phoneNumber,
+      name: namePost,
+      surname: surnamePost,
+      patronymic: patronymicPost,
+      phoneNumber: phoneNumberPost,
+      index: indexPost,
+      city: cityPost,
+      street: streetPost,
+      building: buildingPost,
+      flat: flatPost,
     });
     setIsDataPostEditing(false);
-    // }
   }
 
-  function handleDataSdecSubmit(e) {
+  function handleDataSdecSubmit(e) { // TODO: Добавить проверку на валидность
     e.preventDefault();
-    // if (isNameValid && isEmailValid) {
     onUpdateDataSdec({
-      // name: name,
-      // email: email,
-      // phoneNumber: phoneNumber,
+      name: nameSdec,
+      surname: surnameSdec,
+      patronymic: patronymicSdec,
+      phoneNumber: phoneNumberSdec,
     });
-
     setIsDataSdecEditing(false);
-    // }
   }
 
   return (
@@ -271,7 +275,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={namePost}
-                        onChange={handleNamePostChange}
+                        onChange={(e) => setNamePost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -286,7 +290,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={surnamePost}
-                        onChange={handleSurnamePostChange}
+                        onChange={(e) => setSurnamePost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -301,7 +305,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={patronymicPost}
-                        onChange={handlePatronymicPostChange}
+                        onChange={(e) => setPatronymicPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -316,7 +320,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={phoneNumberPost}
-                        onChange={handlePhoneNumberPostChange}
+                        onChange={(e) => setPhoneNumberPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -331,7 +335,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={indexPost}
-                        onChange={handleIndexPostChange}
+                        onChange={(e) => setIndexPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -346,7 +350,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={cityPost}
-                        onChange={handleCityPostChange}
+                        onChange={(e) => setCityPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -361,7 +365,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={streetPost}
-                        onChange={handleStreetPostChange}
+                        onChange={(e) => setStreetPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -376,7 +380,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={buildingPost}
-                        onChange={handleBuildingPostChange}
+                        onChange={(e) => setBuildingPost(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -391,11 +395,11 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={flatPost}
-                        onChange={handleFlatPostChange}
+                        onChange={(e) => setFlatPost(e.target.value)}
                       />
                     </div>
                     <button
-                      onSubmit={handleDataPostSubmit}
+                      onSubmit={handleSubmitDataPost}
                       className={`profile__save-button ${
                         isDataPostEditing && "link"
                       }`}
@@ -419,7 +423,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={nameSdec}
-                        onChange={handleNameSdecChange}
+                        onChange={(e) => setNameSdec(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -434,7 +438,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={surnameSdec}
-                        onChange={handleSurnameSdecChange}
+                        onChange={(e) => setSurnameSdec(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -449,7 +453,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={patronymicSdec}
-                        onChange={handlePatronymicSdecChange}
+                        onChange={(e) => setPatronymicSdec(e.target.value)}
                       />
                     </div>
                     <div className="profile__content-item">
@@ -464,7 +468,7 @@ export default function Profile({
                         maxLength="40"
                         className="profile__input"
                         value={phoneNumberSdec}
-                        onChange={handlePhoneNumberSdecChange}
+                        onChange={(e) => setPhoneNumberSdec(e.target.value)}
                       />
                     </div>
                     <button

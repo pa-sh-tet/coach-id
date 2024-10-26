@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { CurrentDataPostContext } from "../../contexts/CurrentDataPostContext";
 import { CurrentDataSdecContext } from "../../contexts/CurrentDataSdecContext";
@@ -23,8 +23,30 @@ function App() {
     avatar: avatarImage,
     phoneNumber: "+79541231489",
   });
-  const [currentDataPost, setCurrentDataPost] = useState({});
-  const [currentDataSdec, setCurrentDataSdec] = useState({});
+  
+  const [currentDataPost, setCurrentDataPost] = useState({
+    name: "sd",
+    surname: "sd",
+    patronymic: "sd",
+    phoneNumber: "+79541231489",
+    index: "sd",
+    city: "sd",
+    street: "sd",
+    building: "sd",
+    flat: "sd",
+  }); // Текущие данные доставки по почте
+  
+  const [currentDataSdec, setCurrentDataSdec] = useState({
+    name: "sd",
+    surname: "sd",
+    patronymic: "sd",
+    phoneNumber: "+79541231489",
+    index: "sd",
+    city: "sd",
+    street: "sd",
+    building: "sd",
+    flat: "sd",
+  }); // Текущие данные доставки по СДЭК
 
   const [users, setUsers] = useState([
     {
@@ -40,12 +62,12 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/profile", { replace: true });
+      navigate("/constructor", { replace: true });
     }
   }, []);
 
   function signOut() {
-    setIsLoggedIn(false);
+    setIsLoggedIn(false); // TODO полностью реализовать выход из профиля
     navigate("/", { replace: true });
   }
 
@@ -57,7 +79,7 @@ function App() {
     navigate("/profile", { replace: true });
   }
 
-  function handleLogin(email, password) {
+  function handleLogin(email, password) { // TODO полностью реализовать вход
     const user = users.find(
       (u) => u.email === email && u.password === password
     );

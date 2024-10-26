@@ -122,6 +122,7 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-column-gap: 20px;
+  height: 250px;
 }
 
 .profile__order {

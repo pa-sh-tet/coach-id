@@ -1,6 +1,7 @@
-// import { Canvas, Image } from 'fabric';
 import * as fabric from "fabric";
 import React, { useRef, useState, useEffect } from "react";
+import { TrashIcon } from "sebikostudio-icons";
+import basketImgFront from '../../images/basket__front.png';
 
 export default function Constructor() {
   const canvasRef = useRef();
@@ -8,14 +9,39 @@ export default function Constructor() {
   const [currentSide, setCurrentSide] = useState("front"); // Начальная сторона - лицевая
 
   useEffect(() => {
+    // if (canvasRef.current) {
+    //   const newCanvas = new fabric.Canvas(canvasRef.current);
+    //   setCanvas(newCanvas);
+
+    //   // Загрузка фонового изображения
+    //   fabric.Image.fromURL(basketImgFront, (img) => {
+    //     newCanvas.setBackgroundImage(img, newCanvas.renderAll.bind(newCanvas), {
+    //       scaleX: newCanvas.width / img.width,
+    //       scaleY: newCanvas.height / img.height
+    //     });
+    //   });
+
+    //   return () => {
+    //     newCanvas.dispose();
+    //   };
+    // }
     if (canvasRef.current) {
       const initCanvas = new fabric.Canvas(canvasRef.current, {
-        width: 500,
-        height: 700,
+        width: 313,
+        height: 575,
       });
 
-      initCanvas.backgroundColor = "gray";
-      initCanvas.renderAll();
+      fabric.Image.fromURL('https://images.unsplash.com/photo-1662226708407-6ae3feaf1c9d?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', (img) => {
+        console.log("Изображение  загружено!");
+        // Масштабируем изображение до нужного размера
+        img.scaleToWidth(313);
+        img.scaleToHeight(575);
+
+        // Добавляем изображение как фон
+        // initCanvas.backgroundColor = "red";
+        initCanvas.backgroundImage = img;
+        initCanvas.renderAll();
+      });
 
       setCanvas(initCanvas);
 
@@ -24,6 +50,20 @@ export default function Constructor() {
       };
     }
   }, []);
+
+  // const setBackgroundImage = (url, canvas) => {
+  //   fabric.Image.fromURL(url, (img) => {
+  //     // Масштабируем изображение до нужного размера
+  //     img.scaleToWidth(600);
+  //     img.scaleToHeight(700);
+
+  //     // Устанавливаем фон Canvas
+  //     canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+  //       originX: 'center',
+  //       originY: 'center'
+  //     });
+  //   });
+  // };
 
   const handleImageUpload = (e) => {
     let imgObj = e.target.files[0];
@@ -35,11 +75,17 @@ export default function Constructor() {
       imgElement.src = imageUrl;
       imgElement.onload = () => {
         let image = new fabric.Image(imgElement);
+        image.scaleToWidth(50); // Масштабируем по ширине до 50
+        image.scaleToHeight(50); // Масштабируем по высоте до 50
         canvas.add(image);
         canvas.centerObject(image);
         canvas.setActiveObject(image);
       };
     };
+  };
+
+  const deleteImage = () => {
+    canvas.remove(canvas.getActiveObject());
   };
 
   return (
@@ -50,8 +96,9 @@ export default function Constructor() {
             <canvas
               id="canvas"
               ref={canvasRef}
+              className="canvas__front"
               width={500}
-              height={700}
+              height={500}
             ></canvas>
           </div>
           <div className="constructor__tools">
@@ -63,7 +110,7 @@ export default function Constructor() {
                 accept="image/*"
                 onChange={handleImageUpload}
               />
-              {/* <button onClick={addImage}>Добавить</button> */}
+              <TrashIcon className="trash-icon link" onClick={deleteImage} />
             </div>
           </div>
         </div>

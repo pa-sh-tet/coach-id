@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 600px;
+  height: 800px;
 }
 
 .constructor__container {
@@ -16,5 +16,51 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  outline: 1px red solid;
+  /* outline: 1px red solid; */
+}
+
+.constructor__design {
+  width: 580px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.constructor__button {
+  width: 30px;
+  height: 30px;
+  background-image: url(../../images/button_design.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  opacity: 0.5;
+}
+
+.constructor__button_left {
+  transform: scaleX(-1);
+}
+
+.constructor__tools {
+  margin-top: 50px;
+  padding: 40px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #cdcdcd;
+  border-radius: 30px;
+}
+
+.tool-group {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  height: 100px;
 }

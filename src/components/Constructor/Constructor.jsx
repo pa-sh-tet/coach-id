@@ -1,7 +1,7 @@
 import * as fabric from "fabric";
 import React, { useRef, useState, useEffect } from "react";
 import { TrashIcon } from "sebikostudio-icons";
-import basketImgFront from '../../images/basket__front.png';
+import basketImgFront from "../../images/basket__front.png";
 
 export default function Constructor() {
   const canvasRef = useRef();
@@ -9,61 +9,37 @@ export default function Constructor() {
   const [currentSide, setCurrentSide] = useState("front"); // Начальная сторона - лицевая
 
   useEffect(() => {
-    // if (canvasRef.current) {
-    //   const newCanvas = new fabric.Canvas(canvasRef.current);
-    //   setCanvas(newCanvas);
-
-    //   // Загрузка фонового изображения
-    //   fabric.Image.fromURL(basketImgFront, (img) => {
-    //     newCanvas.setBackgroundImage(img, newCanvas.renderAll.bind(newCanvas), {
-    //       scaleX: newCanvas.width / img.width,
-    //       scaleY: newCanvas.height / img.height
-    //     });
-    //   });
-
-    //   return () => {
-    //     newCanvas.dispose();
-    //   };
-    // }
     if (canvasRef.current) {
       const initCanvas = new fabric.Canvas(canvasRef.current, {
-        width: 313,
-        height: 575,
+        width: 500,
+        height: 600,
       });
 
-      fabric.Image.fromURL('https://images.unsplash.com/photo-1662226708407-6ae3feaf1c9d?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', (img) => {
-        console.log("Изображение  загружено!");
-        // Масштабируем изображение до нужного размера
-        img.scaleToWidth(313);
-        img.scaleToHeight(575);
-
-        // Добавляем изображение как фон
-        // initCanvas.backgroundColor = "red";
-        initCanvas.backgroundImage = img;
-        initCanvas.renderAll();
-      });
-
+      initCanvas.renderAll();
       setCanvas(initCanvas);
-
       return () => {
         initCanvas.dispose();
       };
     }
-  }, []);
+  }, [canvasRef]);
 
-  // const setBackgroundImage = (url, canvas) => {
-  //   fabric.Image.fromURL(url, (img) => {
-  //     // Масштабируем изображение до нужного размера
-  //     img.scaleToWidth(600);
-  //     img.scaleToHeight(700);
-
-  //     // Устанавливаем фон Canvas
-  //     canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-  //       originX: 'center',
-  //       originY: 'center'
-  //     });
-  //   });
-  // };
+  const setBackgroundImg = (url, canvas) => {
+    let imageUrl = url;
+    let imgElement = document.createElement("img");
+    imgElement.src = imageUrl;
+    imgElement.onload = () => {
+      let image = new fabric.Image(imgElement);
+      image.lockMovementX = true;
+      image.lockMovementY = true;
+      image.lockScalingX = true;
+      image.lockScalingY = true;
+      image.selectable = false;
+      image.scaleToWidth(canvas.width); // Масштабируем по ширине до 50
+      image.scaleToHeight(canvas.height); // Масштабируем по высоте до 50
+      canvas.add(image);
+      canvas.centerObject(image);
+    };
+  };
 
   const handleImageUpload = (e) => {
     let imgObj = e.target.files[0];
@@ -102,6 +78,13 @@ export default function Constructor() {
             ></canvas>
           </div>
           <div className="constructor__tools">
+            {/* Выбрать вид спорта */}
+            <div className="tool-group">
+              <label htmlFor="sport-select">Выберите вид спорта</label>
+              <button onClick={() => setBackgroundImg(basketImgFront, canvas)}>
+                Баскетбол
+              </button>
+            </div>
             {/* Добавить картинку */}
             <div className="tool-group">
               <label>Добавить картинку:</label>

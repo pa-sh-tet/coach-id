@@ -21,12 +21,13 @@
 
 .constructor__design {
   position: relative;
-  width: 750px;
-  height: 100%;
+  width: 700px;
+  height: 600px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-top: 50px;
   align-items: center;
 }
 
@@ -47,8 +48,17 @@
 }
 
 .canvas__front {
+  display: block;
   outline: 1px solid #cdcdcd;
-  /* background-image: url(../../images/basket__front.png); */
+}
+
+.canvas__back {
+  display: block;
+  outline: 1px solid #992424;
+}
+
+.hidden {
+  display: none;
 }
 
 .constructor__tools {

@@ -87,3 +87,18 @@
   height: 25px;
   width: 25px;
 }
+
+.tool-group__add-text-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+  border-radius: 15px;
+  background-color: #478ac9;
+  color: #ffffff;
+}
+
+.plus-icon {
+}

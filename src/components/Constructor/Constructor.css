@@ -52,20 +52,11 @@
   outline: 1px solid #cdcdcd;
 }
 
-.canvas__back {
-  display: block;
-  outline: 1px solid #992424;
-}
-
-.hidden {
-  display: none;
-}
-
 .constructor__tools {
   margin-top: 50px;
   padding: 40px;
   width: 400px;
-  height: 400px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   border: 2px solid #cdcdcd;
@@ -73,32 +64,60 @@
 }
 
 .tool-group {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  height: 100px;
+  height: 50px;
   background-color: #cdcdcd;
 }
 
 .trash-icon {
   color: red;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
 }
 
-.tool-group__add-text-button {
+.constructor__add {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px 0;
+  height: auto;
+}
+
+.add-button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100px;
-  padding: 10px;
+  width: 160px;
+  height: 55px;
+  padding: 15px 10px;
   border: 1px solid #cdcdcd;
   border-radius: 15px;
   background-color: #478ac9;
   color: #ffffff;
+  text-align: center;
+  line-height: 25px;
+  font-size: 20px;
 }
 
 .plus-icon {
+  height: 25px;
+  width: 25px;
 }
+
+.text-icon {
+  height: 25px;
+  width: 25px;
+}
+
+/* .add-image-input {
+  color: transparent;
+  width: 100%;
+}
+
+.add-image-input::file-selector-button {
+  display: none;
+} */

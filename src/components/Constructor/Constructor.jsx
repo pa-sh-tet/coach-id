@@ -1,6 +1,6 @@
 import * as fabric from "fabric";
 import React, { useRef, useState, useEffect } from "react";
-import { PlusIcon, TrashIcon } from "sebikostudio-icons";
+import { PlusIcon, TrashIcon, ImageIcon, TextIcon } from "sebikostudio-icons";
 import basketImgFront from "../../images/basket__front.png";
 import basketTexture from "../../images/texture1.jpg";
 
@@ -106,13 +106,13 @@ export default function Constructor() {
     setTextMenuVisible(true);
 
     text.on("selected", () => {
-      console.log("Текстовый объект кликнут!");
+      setText(text.text);
       setTextMenuVisible(true);
     });
 
     text.on("deselected", () => {
-      console.log("Текстовый объект отпущен!");
       setTextMenuVisible(false);
+      setText("");
     });
   };
 
@@ -158,25 +158,47 @@ export default function Constructor() {
                 Баскетбол
               </button>
             </div>
-            {/* Добавить картинку */}
+            {/* Выбор текстуры */}
             <div className="tool-group">
-              <label>Добавить картинку:</label>
+              <label htmlFor="textureSelect">Текстура:</label>
+              <button
+                onClick={() => {
+                  setTexture(basketTexture, frontCanvas);
+                }}
+              >
+                Первый
+              </button>
+            </div>
+            <TrashIcon className="trash-icon link" onClick={deleteImage} />
+            {/* Добавить картинку */}
+            <div className="constructor__add">
+              <button
+                className="constructor__add-image-button add-button link"
+                onClick={() =>
+                  document.getElementById("add-image-input").click()
+                }
+              >
+                <PlusIcon className="plus-icon" />
+                ФОТО
+                <ImageIcon className="text-icon" />
+              </button>
               <input
+                id="add-image-input"
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
+                style={{ display: "none" }}
               />
-              <TrashIcon className="trash-icon link" onClick={deleteImage} />
             </div>
             {/* Добавление текста */}
-            <div className="tool-group">
-              <label>Добавить текст:</label>
+            <div className="constructor__add">
               <button
-                className="tool-group__add-text-button link"
+                className="constructor__add-text-button add-button link"
                 onClick={handleAddTextToCanvas}
               >
                 <PlusIcon className="plus-icon" />
                 ТЕКСТ
+                <TextIcon className="text-icon" />
               </button>
               {textMenuVisible && (
                 <div id="text-menu-container">
@@ -213,17 +235,6 @@ export default function Constructor() {
                   </select>
                 </div>
               )}
-            </div>
-            {/* Выбор текстуры */}
-            <div className="tool-group">
-              <label htmlFor="textureSelect">Текстура:</label>
-              <button
-                onClick={() => {
-                  setTexture(basketTexture, frontCanvas);
-                }}
-              >
-                Первый
-              </button>
             </div>
             {/* Выбор цвета */}
             <div className="tool-group">
